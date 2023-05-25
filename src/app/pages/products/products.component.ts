@@ -87,7 +87,7 @@ export class ProductsComponent implements OnInit {
     this.allDistributions = [...new Set(this.products.map((p: any) => p.distribution))];
   }
 
-  //   download select products
+  //   download selected products
   downloadOrders(){
   if(this.selectProducts.length){
     let productList = this.selectProducts.map((p:any) =>({
@@ -107,7 +107,7 @@ export class ProductsComponent implements OnInit {
   }
   }
 
-  //  export excel file methos
+  //  export excel file method
    exportAsExcelFile(json: any[], excelFileName: string): void {
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
     const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
@@ -115,7 +115,7 @@ export class ProductsComponent implements OnInit {
     this.saveAsExcelFile(excelBuffer, excelFileName);
   }
 
-   // save file as excel file
+   // save file as csv file
    saveAsExcelFile(buffer: any, fileName: string): void {
      const EXCEL_TYPE: string = 'text/csv;charset=utf-8;';
     const data: Blob = new Blob([buffer], {
