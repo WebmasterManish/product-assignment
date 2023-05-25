@@ -30,3 +30,108 @@
   font-weight: 400;
   margin-left: 5px;
 }
+
+.btn-rounded {
+  border-radius: 50px;
+}
+
+table tr:nth-child(even) td {
+  background-color: #F4F4F4;
+
+  &:first-child {
+    border-radius: 5px 0 0 5px
+  }
+
+  &:last-child {
+    border-radius: 0 5px 5px 0
+  }
+}
+
+.product-table {
+  color: #5f5e5e;
+  background-color: white;
+
+  tr td {
+    color: inherit;
+  }
+}
+
+table tr:nth-child(odd) {
+  background-color: white;
+}
+
+.table-wrapper {
+  padding: 0 20px;
+  background-color: white;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  overflow: hidden;
+}
+
+table.borderless td,
+table.borderless th {
+  color: #202020;
+  border: none;
+  padding: 15px 10px;
+}
+
+
+
+.table-filters {
+  background-color: #F4F4F4;
+  border-radius: 15px 15px 0 0;
+  padding: 20px 15px;
+
+  .form-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .input-group-text {
+    position: absolute;
+    left: 0;
+    z-index: 20;
+    border: 0;
+    background: transparent;
+    max-width: 35px;
+  }
+
+  .form-group select {
+    padding-left: 33px;
+  }
+
+  .input-group>.form-control {
+    border-left: none;
+  }
+}
+
+table {
+  tr {
+    th.ref-id {
+      max-width: 60px;
+    }
+
+    td.ref-id {
+      max-width: 60px;
+    }
+
+    th.select {
+      max-width: 35px;
+    }
+
+    &.font-bold {
+      td {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+
+
+.form-control:focus {
+  outline: 0;
+  box-shadow: none;
+}

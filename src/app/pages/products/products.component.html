@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <div class="row mt-2 py-3">
+<div class="container my-3">
+  <div class="row mt-2 py-3 table-filters">
     <div class="col-md-3">
       <div class="form-group has-search">
         <span class="fa fa-search form-control-feedback"></span>
@@ -9,66 +9,80 @@
     </div>
     <div class="col-md-3">
       <div class="form-group">
+        <label class="input-group-text" for="distribution"><i class="fa fa-tag" aria-hidden="true"></i></label>
         <select id="distribution" class="form-control" [(ngModel)]="status" (change)="filterProductsByStatus()">
           <option *ngIf="!status" disabled selected value="">Select Status</option>
           <option *ngFor="let status of allStatus" [value]="status">{{status}}</option>
         </select>
       </div>
+
     </div>
 
     <div class="col-md-3">
       <div class="form-group">
+        <label class="input-group-text" for="distribution"><i class="fas fa-map-marker-alt"></i></label>
         <select id="distribution" class="form-control" [(ngModel)]="distribution"
           (change)="filterProductByDistribution()">
           <option *ngIf="!distribution" disabled selected value="">Select Distributions</option>
           <option *ngFor="let distribution of allDistributions" [value]="distribution">{{distribution}}</option>
         </select>
       </div>
+
+    </div>
+
+    <div class="col-md-3 text-right">
+      <button [disabled]="!selectProducts.length" type="button" (click)="downloadOrders()"
+        class="btn btn-primary float-end btn-rounded btn-icon">
+        <i class="fa fa-download"></i> Export Orders
+      </button>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 px-0">
+      <div class="table-wrapper">
+        <table class="table borderless product-table">
+          <thead>
+            <tr>
+              <th class="select"> <input type="checkbox" class="form-check-input" (change)="toggleSelected()"
+                  [(ngModel)]="allSelected" value="checkedValue"> </th>
+              <th colspan="3">
+                <p class="select-info">all orders</p> <span class="select-span">({{selectProducts.length}} Order
+                  Selected)</span>
+              </th>
+            </tr>
+          </thead>
+          <thead>
 
-      <table class="table table-primary table-striped">
-        <thead>
-          <tr>
-            <th> <input type="checkbox" class="form-check-input" (change)="toggleSelected()" [(ngModel)]="allSelected"
-                value="checkedValue"> </th>
-            <th>
-              <p class="select-info">all orders</p> <span class="select-span">({{selectProducts.length}} Order Selected)</span>
-            </th>
-          </tr>
-        </thead>
-        <thead>
+            <tr>
+              <th class="select">
+                <input type="checkbox" class="form-check-input" disabled [(ngModel)]="isSelected" value="checkedValue">
+              </th>
+              <th class="ref-id">Ref.ID</th>
+              <th>Customer</th>
+              <th>Products</th>
+              <th>Date</th>
+              <th>Distribution</th>
+              <th>Status</th>
+              <th>Price(in Rs.)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products;index as i" [class.font-bold]="product.selected">
+              <td> <input type="checkbox" (change)="selectProduct(product)" class="form-check-input"
+                  [(ngModel)]="product.selected"> </td>
+              <td class="ref-id">{{product.id}}</td>
+              <td>{{product.customer}}</td>
+              <td>{{product.title}}</td>
+              <td>{{product.date}}</td>
+              <td>{{product.distribution}}</td>
+              <td>{{product.status}}</td>
+              <td>{{product.price}}</td>
 
-          <tr>
-            <th>
-              <input type="checkbox" class="form-check-input" disabled [(ngModel)]="isSelected" value="checkedValue">
-            </th>
-            <th>Ref.ID</th>
-            <th>Customer</th>
-            <th>Products</th>
-            <th>Date</th>
-            <th>Distribution</th>
-            <th>Status</th>
-            <th>Price(in Rs.)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let product of products;index as i">
-            <td> <input type="checkbox" (change)="selectProduct(product)" class="form-check-input"
-                [(ngModel)]="product.selected"> </td>
-            <td>{{product.id}}</td>
-            <td>{{product.customer}}</td>
-            <td>{{product.title}}</td>
-            <td>{{product.date}}</td>
-            <td>{{product.distribution}}</td>
-            <td>{{product.status}}</td>
-            <td>{{product.price}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-          </tr>
-        </tbody>
-      </table>
 
     </div>
     <div class="col-md-12" *ngIf="!products.length">

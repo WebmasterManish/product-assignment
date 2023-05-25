@@ -18,10 +18,14 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@fortawesome/fontawesome-free": "^5.1.0-9",
+    "@types/file-saver": "^2.0.5",
     "bootstrap": "^5.2.3",
+    "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
