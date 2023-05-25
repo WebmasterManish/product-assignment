@@ -117,11 +117,11 @@ export class ProductsComponent implements OnInit {
 
    // save file as excel file
    saveAsExcelFile(buffer: any, fileName: string): void {
-    const EXCEL_TYPE: string = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+     const EXCEL_TYPE: string = 'text/csv;charset=utf-8;';
     const data: Blob = new Blob([buffer], {
       type: EXCEL_TYPE
     });
-     FileSaver.saveAs(data, fileName+'.xlsx');
+     FileSaver.saveAs(data, fileName+'.csv');
   }
 
   ngOnInit(): void {
