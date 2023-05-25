@@ -91,13 +91,13 @@ export class ProductsComponent implements OnInit {
   downloadOrders(){
   if(this.selectProducts.length){
     let productList = this.selectProducts.map((p:any) =>({
-    refId: p.id,
-    customer:p.customer,
-    product:p.title,
-    date:p.date,
-    distribution:p.distribution,
-    status:p.status,
-    price:p.price
+    "Reference Id": p.id,
+    Customer:p.customer,
+    Product:p.title,
+    Date:p.date,
+    Distribution:p.distribution,
+    Status:p.status,
+    Price:p.price
     }))
     this.exportAsExcelFile(productList,'Product List');
   }
